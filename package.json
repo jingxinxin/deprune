@@ -1,0 +1,50 @@
+{
+  "name": "deprune",
+  "version": "1.0.0",
+  "description": "Prune unused dependencies in your node module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "release": "tsc && npm publish --access=public"
+  },
+  "bin": {
+    "deprune": "bin/cli.js"
+  },
+  "keywords": [
+    "prune",
+    "check",
+    "unused",
+    "package",
+    "deprune",
+    "dependency",
+    "dependencies",
+    "devDependencies",
+    "uninstall"
+  ],
+  "author": {
+    "name": "Jacks",
+    "email": "jack@fengte.fun",
+    "url": "https://www.51201314.me"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "depcheck": "^1.4.1",
+    "execa": "^5.0.0",
+    "fs-extra": "^10.0.0",
+    "inquirer": "^8.0.0",
+    "json-parse-even-better-errors": "^2.3.1",
+    "lodash": "^4.17.21",
+    "ora": "^5.4.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.11",
+    "@types/inquirer": "^7.3.1",
+    "@types/lodash": "^4.14.169"
+  }
+}
