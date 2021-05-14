@@ -1,5 +1,7 @@
 # deprune
 
+> Prune your npm module for unused dependencies in batches
+
 Deprune is a tool for analyzing and Pruning unused dependencies in batches to see: how each 
 dependency is used, which dependencies are useless, and which dependencies are missing from 
 package.json.
@@ -15,14 +17,8 @@ package.json.
 [![npm](https://img.shields.io/npm/dm/deprune.svg?maxAge=2592000)]()
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fjingxinxin%2Fdeprune.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fjingxinxin%2Fdeprune?ref=badge_shield)
 
-> Prune your npm module for unused dependencies in batches
-
-
-
 # Requirements
 * Node >= 10.
-
-
 
 # Installation
 ```bash
