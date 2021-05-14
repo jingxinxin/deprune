@@ -33,16 +33,10 @@ const options = {
     //     'ava'
     // ]
 }
+const spinner = ora(`Checking npm registries for prune packages.`)
+spinner.start()
 
 depcheck(process.cwd(), options).then((unused) => {
-    // console.log('Unused dependencies')
-    // console.log(unused.dependencies)
-    // console.log('Unused devDependencies')
-    // console.log(unused.devDependencies)
-    // console.log('Missing dependencies')
-    // console.log(unused.missing)
-    // console.log('Using dependencies')
-    // console.log(unused.using)
     // console.log(unused.invalidFiles)
     // console.log(unused.invalidDirs)
 
@@ -70,6 +64,7 @@ depcheck(process.cwd(), options).then((unused) => {
             pageSize: process.stdout.rows - 2
         }
     ]
+    spinner.stop()
 
     inquirer
         .prompt(question)
@@ -87,18 +82,16 @@ depcheck(process.cwd(), options).then((unused) => {
             const spinner = ora(`Pruning using ${chalk.green('npm prune')}...`)
             spinner.start()
 
-            execa('npm',['prune']).then(output => {
-                spinner.stop();
-                console.log(output.stdout);
-                console.log(output.stderr);
+            execa('npm', [ 'prune' ]).then(output => {
+                spinner.stop()
+                console.log(output.stdout)
+                console.log(output.stderr)
 
-                console.log(chalk.green(`[deprune] prune complete!`));
+                console.log(chalk.green(`[ deprune ] prune complete!`))
             }).catch(err => {
-                spinner.stop();
-                throw err;
-            });
-
-
+                spinner.stop()
+                throw err
+            })
 
         })
         .catch(error => {
@@ -109,15 +102,7 @@ depcheck(process.cwd(), options).then((unused) => {
                 // Something else went wrong
             }
         })
-    // const choicesGrouped = UI_GROUPS.map(group => createChoices(deps, group))
-    //     .filter(Boolean)
 })
-
-// With Promises:
-// fs.writeJsonSync('./package.json', { name: 'fs-extra' })
-
-// const packageObj = fse.readJsonSync('./package.json')
-// console.log(packageObj)
 
 const unselectable = (options?: any) => new inquirer.Separator(chalk.reset(options ? options.title : ' '))
 
@@ -138,8 +123,4 @@ const UI_GROUPS = [
         title: `${chalk.bold.underline.green('Using dependencies')} ${chalk.green('a lookup indicating each dependency is used by which files.')}`,
         type : 'using'
     }
-    // unselectable({ title: `${chalk.bold.underline.red('Unused dependencies')} ${chalk.red('Backwards-compatible bug fixes.')}` }),
-    // unselectable({ title: `${chalk.bold.underline.magenta('Unused devDependencies')} ${chalk.magenta('Backwards-compatible bug fixes.')}` }),
-    // unselectable({ title: `${chalk.bold.underline.yellow('Missing dependencies')} ${chalk.yellow('Backwards-compatible bug fixes.')}` }),
-    // unselectable({ title: `${chalk.bold.underline.green('Using dependencies')} ${chalk.green('Backwards-compatible bug fixes.')}` }),
 ]
