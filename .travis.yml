@@ -1,0 +1,20 @@
+sudo: false
+language: node_js
+os:
+- linux
+- osx
+node_js:
+- 14
+- 13
+- 12
+- 10
+#before_deploy:
+#- "./node_modules/.bin/patch-version"
+deploy:
+  - provider: npm
+    skip_cleanup: true
+    email: 191100479@qq.com
+    api_key:
+      secure: 1hNdEl3O1ogeWAGGbkQ+sjeA6CiRZHqyjzJtYVuRlU8B3bs3TXsBXkFvXhFfhG7cXZ9yhEDKrc5ZtmNzt9UMXPC3bKyBeGa5PlHj6XhnUn21iW7pxpu3JimDdTQAHC40sBcJa77zFXQflUmeMiYPhnzDjUHv8BYk0KMHfNicpsC8ySDO9RzUJD5l/dw85w66kFJaHGr0W4z2FhMDOHMgpRGyuSdrHefAyAVdSK6rOHJmVNFsSEnjX1C2LdPEOgOkqJR4hcOo3GAf6cSr8SMfYQ6qbbCTZUXR+dembmI759/tjtznQLfFUtdRamA3aVL3Fx4wy+2Pe1v05FOluN2VFPdrFPkZ8w1F8+OWx7cKbAj9999caqUgi8WfLrI5YhuXzLRnLHhzuZRHawUXgm0FhFG/pIuHprrq2mpCh0zQoGDemcDNIIZO1uH6DjDTQ5R6lZrnVrcQodZ3/eH3FT/ZOSfUorq1vvKSEGApYJVJj4crXPHChtnSxraMZbO3/a8k+AS3hkRBHXZVBERcSyp3WDcFfqEPbd/6NwncxZtyzOWU1ESrZWn9fSDw1sgcmn01fbEJpearHqH67YqPlRkKNu+zCldpQQnW6KAGS3T28VxON6LTzXUbXb2yhH4hngrJUyRT5nMJBn9tBsJo1U7wwROM3LjG1Z3B8AxE7s12MaA=
+    on:
+      tags: true
